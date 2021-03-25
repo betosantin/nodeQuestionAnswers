@@ -41,7 +41,9 @@ app.post("/salvarPergunta", function (req, res) {
     console.log(titulo);
     var descricao = req.body.descricao;
     console.log(descricao);
-    res.send("Formulário recebido!<br/>" + "Título: " + titulo + "<br/>Descrição: " + descricao);
+    res.send("Formulário recebido!<br/>" 
+    + "Título: " + titulo 
+    + "<br/>Descrição: " + descricao);
 });
 
 app.listen(4000, () => {
