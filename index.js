@@ -1,8 +1,13 @@
 const express = require("express");
 const app = express();
+const bodyParser = require("body-parser");
 
 app.set("view engine", "ejs");
 app.use(express.static("public"));
+
+//body parsers
+app.use(bodyParser.urlencoded({ extended: false }));
+app.set(bodyParser.json());
 
 // app.get("/teste/:nome?/:lang?", function (req, res) {
 //     //res.send("Bem vindo.");
@@ -31,8 +36,12 @@ app.get("/perguntar", function (req, res) {
     res.render("perguntar.ejs");
 });
 
-app.post("/salvarPergunta", function(req, res) {
-    res.send("Formulário recebido!");
+app.post("/salvarPergunta", function (req, res) {
+    var titulo = req.body.titulo;
+    console.log(titulo);
+    var descricao = req.body.descricao;
+    console.log(descricao);
+    res.send("Formulário recebido!<br/>" + "Título: " + titulo + "<br/>Descrição: " + descricao);
 });
 
 app.listen(4000, () => {
